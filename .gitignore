@@ -1,0 +1,4 @@
+.project
+.pydevproject
+lissi/__pycache__
+lissi/*/__pycache__

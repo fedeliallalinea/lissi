@@ -1,0 +1,24 @@
+#!/sbin/openrc-run
+
+USER="lissi"
+PID_FILE="/var/run/lissi.pid"
+RUN_FILE="/usr/bin/lissi"
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting lissi bot"
+	
+	start-stop-daemon --start --user ${USER} \
+	--pidfile ${PID_FILE} --make-pidfile --background \
+	--exec ${RUN_FILE}
+	eend $?
+}
+
+stop() {
+	ebegin "Shutting down lissi bot"
+	start-stop-daemon --stop --user ${USER} --pidfile ${PID_FILE}
+	eend $?
+}
