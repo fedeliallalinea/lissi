@@ -3,17 +3,19 @@
 import os
 from setuptools import find_packages, setup
 
+from lissi.info import __version__, __authors__, __homepage__
+
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setup(
 	name='lissi',
-	version='0.0.1b1',
+	version=__version__,
 	description='IRC bot expandable via plugins',
     license = 'GPLV2',
-	author='Gentoo Linux Forums Team',
+	author=__authors__,
 	author_email='forum-mods@gentoo.org',
-	url='https://github.com/fedeliallalinea/lissi',
+	url=__homepage__,
 #	long_description=read('README.md'),
 	project_urls={
         'Bug Reports': 'https://github.com/fedeliallalinea/lissi/issues',
