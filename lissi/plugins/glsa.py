@@ -11,9 +11,7 @@ class Glsa(Plugin):
         if len(params) >= 1:
             if msg.startswith('!'):
                 logger.info('Catched command \'glsa\' with parameters \'%s\'' % params)
-            
-            if params[0].startswith('#'):
-                params[0] = params[0][1:]
+
             self._parse(
                 'https://security.gentoo.org/glsa/%s' % params[0], 
                 params[0],
@@ -43,7 +41,7 @@ class Glsa(Plugin):
             
         else:
             logger.error('The url \'%s\' return status code %d' % (url, resp.status_code))
-            self.irc.privmsg(channel, '%s: the page return status code %d' % (user, resp.status_code))
+            self.irc.privmsg(channel, '%s: A GLSA with id \'%s\' doesn\'t exist' % (user, param))
     
     def get_listen_items(self):
         return [{
