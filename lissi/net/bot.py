@@ -12,11 +12,11 @@ class Bot:
         signal.signal(signal.SIGINT, self._handler_stop_signals)
         signal.signal(signal.SIGTERM, self._handler_stop_signals)
         
-    def add_plugin(self, plugin):
+    def add_plugin(self, plugin, config):
         try:
             module = importlib.import_module('%s.%s' % ('lissi.plugins', plugin))
             cls = getattr(module, plugin.capitalize())
-            self._plugins.append(cls(self.irc,self.name))
+            self._plugins.append(cls(self.irc,self.name, config))
         except ModuleNotFoundError:
             logger.error('No module plugins.%s found' % plugin.lower())
         except AttributeError:

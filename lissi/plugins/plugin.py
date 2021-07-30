@@ -6,9 +6,10 @@ logger = logging.getLogger(__name__)
 
 class Plugin(ABC):
     
-    def __init__(self, irc, botname):
+    def __init__(self, irc, botname, config):
         self.irc = irc
         self.botname = botname
+        self.config = config
  
     def execute(self, user, channel, msg):
         matches_action = re.match('^\x01ACTION (.*)\x01$', msg)

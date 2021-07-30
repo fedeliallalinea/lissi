@@ -78,7 +78,11 @@ def main():
 	try:
 		bot = Bot(config.get('bot','name'), irc)
 		for plugin in config.get('bot','plugins').replace(' ','').split(','):
-			bot.add_plugin(plugin)
+			try:
+				pluginConfig = config[plugin]
+			except KeyError:
+				pluginConfig = None
+			bot.add_plugin(plugin, pluginConfig)
 	except Exception as msg:
 		logger.error('Wrong configuration: %s' % msg)
 		sys.exit(1)
