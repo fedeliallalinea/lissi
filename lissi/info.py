@@ -1,4 +1,4 @@
-__version__ = '0.0.2'
+__version__ = '0.0.3'
 __homepage__ = 'https://github.com/fedeliallalinea/lissi'
 __bugto__ = 'https://github.com/fedeliallalinea/lissi/issues'
 __authors__ = 'Gentoo Linux Forums Team'
